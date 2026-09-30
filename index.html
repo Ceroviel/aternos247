@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24_7 Minecraft Bot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>" />
+</head>
+<body>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal-overlay">
+    <div class="modal">
+      <h2>🔐 Admin Login</h2>
+      <p>Enter your API token to access the dashboard.</p>
+      <div class="modal-form">
+        <label for="apiUrlInput">Backend URL</label>
+        <input type="url" id="apiUrlInput" placeholder="http://localhost:3000" autocomplete="url" />
+        <label for="tokenInput">API Token</label>
+        <input type="password" id="tokenInput" placeholder="Your BOT_API_TOKEN" autocomplete="off" />
+        <button id="loginBtn" class="btn btn-primary btn-full">Connect</button>
+        <p id="loginError" class="error-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard hidden">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <span class="header-icon">⛏️</span>
+        <h1>24_7 Minecraft Bot</h1>
+      </div>
+      <button id="logoutBtn" class="btn btn-small btn-ghost">Logout</button>
+    </header>
+
+    <!-- Status Hero -->
+    <section class="status-hero">
+      <div id="statusIndicator" class="status-indicator offline">
+        <span id="statusEmoji" class="status-emoji">🔴</span>
+        <span id="statusText" class="status-text">OFFLINE</span>
+      </div>
+    </section>
+
+    <!-- Info Cards Grid -->
+    <section class="cards-grid">
+      <div class="card">
+        <div class="card-label">Minecraft Server</div>
+        <div class="card-value" id="cardServer">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Bot</div>
+        <div class="card-value" id="cardBot">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Uptime</div>
+        <div class="card-value" id="cardUptime">—</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Connection</div>
+        <div class="card-value" id="cardConnection">—</div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+      <button id="btnStart" class="btn btn-success">▶ START</button>
+      <button id="btnStop" class="btn btn-danger">⏹ STOP</button>
+      <button id="btnRestart" class="btn btn-warning">🔄 RESTART</button>
+    </section>
+
+    <!-- Logs & System Info -->
+    <section class="bottom-grid">
+      <div class="card card-logs">
+        <div class="card-label">Recent Logs</div>
+        <div id="logContainer" class="log-container">
+          <p class="log-placeholder">No logs yet.</p>
+        </div>
+      </div>
+      <div class="card card-system">
+        <div class="card-label">System</div>
+        <div class="system-info">
+          <div class="system-row">
+            <span>Reconnect attempts</span>
+            <span id="sysReconnect">0</span>
+          </div>
+          <div class="system-row">
+            <span>Last connected</span>
+            <span id="sysLastConnected">Never</span>
+          </div>
+          <div class="system-row">
+            <span>Last disconnect</span>
+            <span id="sysLastDisconnect">Never</span>
+          </div>
+          <div class="system-row">
+            <span>State</span>
+            <span id="sysState">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>24_7 Minecraft Bot Dashboard</span>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
